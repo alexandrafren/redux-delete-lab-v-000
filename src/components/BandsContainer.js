@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 class BandsContainer extends Component {
 
   renderBands = () => {
-    return this.props.bands.map(band => <Band delete={this.props.delete} key={band.id} band={band.bandName} />)
+    return this.props.bands.map(band => <Band delete={this.props.deleteBand} key={band.id} band={band.bandName} />)
   }
   //method to render bands
   render() {
@@ -27,7 +27,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addBand: name => dispatch({ type: "ADD_BAND", name })
+  addBand: name => dispatch({ type: "ADD_BAND", name }),
+  deleteBand: bandId => dispath({type: "DELETE_BAND", bandId})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BandsContainer)
